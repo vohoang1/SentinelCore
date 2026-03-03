@@ -1,0 +1,12 @@
+warning: variable does not need to be mutable
+  --> src\main.rs:89:9
+   |
+89 |     let mut kernel_comm = cloud::kernel_comms::KernelComm::connect();
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: `core` (bin "core") generated 1 warning (run `cargo fix --bin "core" -p core` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.32s

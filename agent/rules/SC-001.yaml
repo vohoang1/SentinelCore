@@ -1,0 +1,9 @@
+id: "SC-001"
+name: "Suspicious PowerShell Execution"
+version: "1.0.1"
+severity: "High"
+condition:
+  event_type: "ProcessStart"
+  image_path: "powershell.exe"
+  args_contains: ["-enc", "-nop", "bypass"]
+action: "Alert"

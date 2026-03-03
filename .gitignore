@@ -1,0 +1,43 @@
+# ─── Secrets & Environment ───────────────────────────────────────────────────
+.env
+.env.local
+.env.production
+*.pem
+*.key
+*.pfx
+secrets.toml
+
+# ─── Audit & Forensic Logs (never commit real logs) ──────────────────────────
+data/security_audit.log
+data/*.log
+*.log
+attack_dump.json
+raw_payloads/
+
+# ─── Rust build artifacts ─────────────────────────────────────────────────────
+target/
+**/*.rs.bk
+Cargo.lock
+
+# ─── Windows Driver build artifacts ───────────────────────────────────────────
+*.sys
+*.pdb
+*.obj
+*.inf
+*.cer
+*.cat
+*.exp
+*.map
+driver/x64/
+
+# ─── IDE & OS artifacts ───────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+Thumbs.db
+.DS_Store
+
+# ─── Docker (never commit overrides with real credentials) ────────────────────
+docker-compose.override.yml
+.docker/

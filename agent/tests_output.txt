@@ -1,0 +1,14 @@
+   Compiling core v0.1.0 (D:\Cac Du An coder\SentinelCore\core)
+error: this file contains an unclosed delimiter
+   --> src\engine\rule.rs:175:3
+    |
+ 35 | impl CompiledRule {
+    |                   - unclosed delimiter
+...
+ 73 |     pub fn matches(&self, event: &NormalizedEvent) -> bool {
+    |                                                            - unclosed delimiter
+...
+175 | }
+    |  ^
+
+error: could not compile `core` (bin "core" test) due to 1 previous error
