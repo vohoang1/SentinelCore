@@ -30,6 +30,12 @@ SentinelCore is a production-grade EDR agent that detects post-exploitation acti
 > It is not intended for use against systems you do not own or have explicit written permission to test.
 > See [SECURITY.md](./SECURITY.md) for the responsible disclosure policy.
 
+## Open-Core Model
+
+This repository contains the **SentinelCore Lite Agent**, an open-source endpoint detection engine.
+
+The **SentinelCore Enterprise Platform** — a distributed Threat Intelligence SaaS featuring multi-tenant centralized management, fleet-wide IP blocking, and an advanced Machine Learning behavioral scoring engine — is maintained privately. This repository serves as the transparent, open-source core telemetry and detection foundation.
+
 ---
 
 ## Architecture

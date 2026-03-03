@@ -41,3 +41,14 @@ Thumbs.db
 # ─── Docker (never commit overrides with real credentials) ────────────────────
 docker-compose.override.yml
 .docker/
+
+# ─── SentinelCore Private SaaS Components (Open-Core Strategy) ───────────────
+# These components represent the proprietary, distributed threat intelligence logic
+# and are explicitly excluded from the public repository.
+central_server/
+agent_node/
+deploy/
+wp_engine/intelligence/
+wp_engine/wp/lifecycle_detector.py
+wp_engine/test_engine.py
+wp_engine/test_sample.log
