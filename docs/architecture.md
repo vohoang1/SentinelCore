@@ -1,6 +1,6 @@
 # SentinelCore — Enterprise Endpoint Detection & Response Agent
 
-**Author:** Vu Huynh  
+**Author:** Vo hoang  
 **Stack:** Rust (user-mode) · C/WDK (kernel-mode) · ETW · SQLite · Ed25519 · mTLS  
 **Lines of Code:** ~6,500 (Rust) + ~800 (C/WDK)  
 **Target:** Windows 10/11 x64
