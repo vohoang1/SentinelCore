@@ -60,7 +60,7 @@ SentinelCore is a production-grade EDR agent that detects post-exploitation acti
 └─────────────────────────────────────────────────────────────┘
 ```
 
-> Full architecture diagram with data flow: [ARCHITECTURE.md](ARCHITECTURE.md)
+> Full architecture diagram with data flow: [ARCHITECTURE.md](architecture.md)
 
 ---
 
