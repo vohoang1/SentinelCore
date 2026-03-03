@@ -1,0 +1,28 @@
+[Unit]
+Description=HoangSec Security Agent
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=hoangsec
+Group=hoangsec
+WorkingDirectory=/opt/hoangsec
+ExecStart=/opt/hoangsec/venv/bin/python -m agent_node.agent
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hoangsec-agent
+
+# Security hardening
+NoNewPrivileges=no
+PrivateTmp=yes
+ProtectSystem=strict
+ReadWritePaths=/var/log /tmp
+
+# Environment
+EnvironmentFile=/etc/hoangsec/agent.env
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hoangsec
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: hoangsec
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./central_server/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hoangsec"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+
+  api:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql://hoangsec:${DB_PASSWORD}@db/hoangsec
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+    ports:
+      - "127.0.0.1:8000:8000" # Bind to localhost only — nginx fronts this
+    volumes:
+      - ./deploy/certs/ca.crt:/etc/hoangsec/ca.crt:ro
+
+  celery:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.api
+    restart: unless-stopped
+    command: celery -A central_server.tasks.celery_app worker --loglevel=info
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_URL: postgresql://hoangsec:${DB_PASSWORD}@db/hoangsec
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+
+volumes:
+  pg_data:
